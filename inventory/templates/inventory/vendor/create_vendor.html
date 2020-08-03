@@ -1,0 +1,11 @@
+{% extends 'inventory/main.html' %}
+
+{% block content %}
+<form action="{% url 'vendor_create' %}" method="POST">
+  {% csrf_token %}
+{{ form}}
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
+{% endblock %}

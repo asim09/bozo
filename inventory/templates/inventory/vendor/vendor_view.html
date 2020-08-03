@@ -1,0 +1,36 @@
+{% extends 'inventory/main.html' %}
+
+{% block content %}
+    <div class="row">
+    <div class="col-md-11">
+    <br>
+   <a href="{% url 'vendor_create' %}"> <button type="button" class="btn btn-primary float-right" >Create Vendor</button></a>
+    <br><br>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Vendor Name</th>
+      <th scope="col">Mobile</th>
+      <th scope="col">Adress</th>
+      <th scope="col">created_at</th>
+    </tr>
+  </thead>
+    {% for vendor in vendors %}
+  <tbody>
+    <tr>
+      <th scope="row">{{ vendor.id }}</th>
+      <th scope="row">{{ vendor.name | title}}</th>
+      <td>{{ vendor.mobile }}</td>
+      <td>{{ vendor.address }}</td>
+      <td>{{ vendor.created_at }}</td>
+    </tr>
+  </tbody>
+{% endfor %}
+</table>
+    </div>
+    </div>
+
+
+{% endblock %}

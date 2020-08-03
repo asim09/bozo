@@ -1,0 +1,47 @@
+    <head>
+        <title>
+            FLASH
+        </title>
+
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+
+    </head>
+    <br><br>
+    <div class="row">
+    <div class="col-md-11">
+        <h2>User Login</h2>
+    <span><a href="{% url 'signup' %}">Signup</a> </span>
+<form action="" method="post">
+    {% csrf_token %}
+  <div class="row">
+    <div class="col">
+      <input type="text" class="form-control" placeholder="User Name" name="username">
+    </div>
+    <div class="col">
+      <input type="password" class="form-control" placeholder="Password" name="password">
+    </div>
+  </div>
+    <br>
+        <button type="submit" class="button float-right">Submit</button>
+
+</form>
+
+        {% for msg in messages %}
+            {{ msg }}
+        {% endfor %}
+    </div></div>
+
+
+
+
+
+
+{#<form action="" method="post">#}
+{#    #}
+{#    {% for field in form %}#}
+{#        {{ field.label }}#}
+{#        {{ field }}#}
+{#    {% endfor %}#}
+{#</form>#}
