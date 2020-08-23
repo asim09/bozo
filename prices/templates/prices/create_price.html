@@ -1,11 +1,41 @@
 {% extends 'inventory/main.html' %}
 
 {% block content %}
+    <div class="container">
 <form action="" method="POST">
-  {% csrf_token %}
-{{ form}}
-  <button type="submit" class="btn btn-primary">Submit</button>
+{% csrf_token %}
+    <div class="dropdown">
+    <label>Source</label>
+        <select name="source">
+                  {% for i in data %}
+    <option class="dropdown-item" value="{{ i.source }}">{{ i.source }}</option>
+      {% endfor %}
+
+        </select>
+<label>Source</label>
+            <select name="destination">
+                  {% for i in data %}
+    <option class="dropdown-item" value="{{ i.destination }}">{{ i.destination }}</option>
+      {% endfor %}
+            </select>
+
+            <label>Vendor Name</label>
+            <select name="vendor_name">
+                  {% for i in vendors %}
+    <option class="dropdown-item" value="{{ i.name }}">{{ i.name }}</option>
+      {% endfor %}
+
+        </select>
+    <label>Price</label>
+    <input name="price" value="">
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+    </div>
+
 </form>
+    </div>
+
+
 
 
 {% endblock %}

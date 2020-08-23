@@ -1,5 +1,4 @@
 from django.db import models
-
 # Create your models here.
 
 
@@ -17,21 +16,31 @@ class Vendor(models.Model):
 
 class CabModels(models.Model):
     model_name = models.CharField(max_length=120)
+    image = models.ImageField(null=True, blank=True)
 
     created_at = models.DateTimeField(auto_now_add=True, null=True)
 
     def __str__(self):
         return self.model_name
 
+    @property
+    def imageUrl(self):
+        try:
+            url = self.image.url
+        except:
+            url = ''
+        return url
+
 
 class Cab(models.Model):
     model_name = models.CharField(max_length=120)
     seats = models.IntegerField()
     city = models.CharField(max_length=120)
+    cab_model = models.ForeignKey(CabModels,on_delete=models.SET_NULL,null=True)
+
     vendor = models.ForeignKey(Vendor,on_delete=models.SET_NULL,null=True)
 
     created_at = models.DateTimeField(auto_now_add=True, null=True)
-
 
     def __str__(self):
         return self.model_name
@@ -50,3 +59,6 @@ class Routes(models.Model):
     travel_time = models.IntegerField()
 
     created_at = models.DateTimeField(auto_now_add=True, null=True)
+
+    # def __str__(self):
+    #     return self.source

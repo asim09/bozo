@@ -5,7 +5,10 @@ from .models import Vendor,Cab,CabModels,Routes
 
 def get_vendor_data():
     data = Vendor.objects.values('name')
-    print(data)
+    return data
+
+def get_cab_models():
+    data = CabModels.objects.values('model_name')
     return data
 
 
@@ -16,12 +19,15 @@ class VendorForm(ModelForm):
 
 
 class CabForm(ModelForm):
+    vendor_name = forms.Select(choices=get_vendor_data())
     class Meta:
         model = Cab
         fields = '__all__'
+        exclude = ['cab_model','vendor']
         vendor_name = get_vendor_data()
+        cab_models = get_cab_models()
         widgets = {
-            'age': forms.Select(choices=vendor_name,attrs={'class': 'form-control'}),
+            'vendor': forms.Select(choices=vendor_name,attrs={'class': 'form-control'}),
         }
 
 

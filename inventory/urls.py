@@ -11,7 +11,7 @@ urlpatterns = [
 
     path('cab/view', views.cab_view, name='cab_view'),
     path('cab/create/', views.cab_create, name='cab_create'),
-    path('cab/update/<str:id>', views.cab_update, name='cab_update'),
+    path('cab/update/<int:id>', views.cab_update, name='cab_update'),
 
     # path('route/view', views.cab_view, name='cab_view'),
     path('route/create/', views.route_create, name='route_create'),

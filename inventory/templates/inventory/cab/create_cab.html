@@ -1,11 +1,62 @@
+{#{% extends 'inventory/main.html' %}#}
+{##}
+{#{% block content %}#}
+{#<form action="" method="POST">#}
+{#  {% csrf_token %}#}
+{#{{ form}}#}
+{#  <button type="submit" class="btn btn-primary">Submit</button>#}
+{#</form>#}
+{##}
+{##}
+{#{% endblock %}#}
+
+
+
+
 {% extends 'inventory/main.html' %}
 
 {% block content %}
 <form action="" method="POST">
   {% csrf_token %}
-{{ form}}
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <div class="row">
+    <div class="form-group col-md-3">
+        <label>Model</label>
+        <select name="model" class="form-control">
+            {% for i in cab_model %}
+            <option value="{{ i.model_name }}">{{i.model_name}}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-group col-md-3">
+        <label>Seats</label>
+      <input type="text" class="form-control" placeholder="First name" name="seats">
+    </div>
+  <div class="form-group col-md-3">
+        <label>City</label>
+      <input type="text" class="form-control" placeholder="First name" name="city">
+    </div>
+        <div class="form-group col-md-3">
+        <label>Vendor</label>
+        <select name="vendor" class="form-control">
+            {% for i in vendor %}
+            <option value="{{ i.id }}">{{i.name}}</option>
+            {% endfor %}
+        </select>
+    </div>
+  </div>
+    <div class="form-group col-md-3">
+        <button type="submit" class="btn btn-primary">Submit</button>
+</div>
+{#  <button type="submit" class="btn btn-primary">Submit</button>#}
 </form>
 
 
 {% endblock %}
+
+
+
+
+
+<form>
+
+</form>

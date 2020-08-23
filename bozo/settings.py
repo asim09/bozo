@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django_filters',
     'users',
     'prices',
+    'dashboard'
 ]
 
 MIDDLEWARE = [
@@ -91,7 +92,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        'NAME': 'myflashdb',
+        'NAME': 'bozo',
         # 'HOST': 'localhost',
         'USER': 'root',
         'PASSWORD': 'root'
@@ -134,5 +135,12 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
+# CURRENT_PATH = os.path.abspath(os.path.dirname(__file__).decode('utf-8'))
 
 STATIC_URL = '/static/'
+
+STATIC_ROOT = 'static/'
+
+MEDIA_URL = '/images/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR,'static/images')
